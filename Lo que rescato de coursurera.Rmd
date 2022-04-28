@@ -1,0 +1,56 @@
+---
+title: "FUNCIONES R"
+author: "ME!"
+date: '2022-04-20'
+output:
+  pdf_document: default
+  html_document: default
+---
+#Lo que pude rescatar de Coursera  
+Lo primero y superimportante es la pregunta de investigation  
+Para ayuda en R: **?command**  
+Los foros de ciencia son *Stack Overflow* y *Cross Validated*  
+Hay como 5 idiomas en R -> <https://r4stats.com/>  
+Paquetes [^1] son descargables desde   
+[^1] <https://www.rdocumentation.org/>
+
++ **RCRAN** *Red integral de archivos R*  
++ **Bioconductor** *Paquetes de enfoque bioinformatico*
++ **Github**  
+  - install.packages("")  
+  - library ()  
+  - remove.packages("")  
+  - detach() | detach("package:", unload=T)  
+  - version | sessionInfo()  
+  - help
+  
+##Comandos a patir de pack readr  
+readr solo funciona en versiones de 4.2.0 de R[Descargar esa version aqui](https://cran.r-project.org/bin/windows/base/index.html)  
+Luego se instala, y si hay problemas, probar con re-instalar "tzdb", eso sugieren las soluciones en foros 
+Para mostrar columnas en un solo Data, se escribe algo asi **equipos <- read_csv("C:/Users/luis_/AppData/Local/R/win-library/4.2/readr/extdata/mtcars.csv.bz2", col_types = cols_only(mpg = col_number()), n_max = 32)**  
+##Almacenar datos  
+###Formato de texto  
+#### Sacar con 'dput' un archivo  
+dput(y, file = "y.R")  
+#### Meter con 'dput' desde un archivo  
+new.y <- dget("y.R")  
+Este no se que pex  
+dump(c("x", "y"), file = "data.R")  
+###Formato binario  
+Es clave **save(), save.image(), and serialize().**  
+Para varios objetos la extension debe ser .RData y .rda con save() para otros softwares  
+Pa serializar x <- lista(1, 2, 3)  
+serialize(x, NULL)  
+##Conectarse a:  
+###Archivos  
+str(file, gzfile, url)  
+function (description = "", open = "", blocking = TRUE, encoding = getOption("encoding"), raw = FALSE, method = getOption("url.method", "default"))  
+description es el nombre del dcto  
+open, es según necesitemos solo leer (r), editarlo (w), adjuntarlo (a), o modo binario (“rb”,  “wb”,  “ab”)  
+**Create a connection se simpifica con variable <- read_csv("Nombre del .txt")**  
+*Warning message:*  
+In for (stage in c("install", "render")) if (stage %in% stages) Rd <- processRdSexprs(Rd,  :  
+  closing unused connection 5 (http://www.jhsph.edu)  
+##MATRICES  
+matrix()  
+Luego cuando se extrae con [] y deseamos conservar el formato de matriz y no un vector de longitud, entoces debe ser: drop=False  
