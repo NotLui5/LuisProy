@@ -54,3 +54,53 @@ In for (stage in c("install", "render")) if (stage %in% stages) Rd <- processRdS
 ##MATRICES  
 matrix()  
 Luego cuando se extrae con [] y deseamos conservar el formato de matriz y no un vector de longitud, entoces debe ser: drop=False  
+##PARA LISTAS  
+x <- list(foo = 1:4, bar = 0.6)  
+Se extrae como los otros, pero ahora ya funciona $ y [[]], en esta ultima si se abrevian nombres, el elemento primero va entre comillas y luego debe poner exact = False]]  
+##Valores NA  
+Si faltan valores y quiero eliminar entonces uso is.na(*objeto*) primero a un objeto y luego *objeto*[!*objeto con funcion*]
+Elementos ausentes se imprimen como verdaderos con la primera funcion, pero se vuelven falsos con complete.cases()
+Aplica igual en data frame, *objeto*(*description*[*objeto con funcion*, ])  
+##dplyr  
+Funcion buena porque se puede tener una idea de que se ejecuta por su significado directo en la palabra  
+select(description, *object*)  
+filter(description, *object*)  n
+arrange(description, *object*)  
+arrange(description, desc(*object*))  
+rename(description, nuevo = antiguo)  
+mutate(description,  nueva =  calculo remplazo medida (*variable*, na.rm  =  TRUE)) #Si quieren eliminar las cols no implicadas es con **transmutate**  
+summarize()  
+group_by(description, *objeto*)  
+quantil(description$*objeto*, seq(0, 1, 0.2), na.rm = TRUE)  
+_Para no crear conjunto de variables temporales se debe usar al final de cada conjunto **%>%**_  
+---
+##Controles  
+####if(<condition>) {#do something} #Continuar con el Code, else if(<condition2>) {# do something different} else {# do something different si no se cumple}  
+####for(i in seq_along(x)) {print(x[i])} sin seq_along, se pondria el intervalo.  
+####*objeto* <- matrix(Contenido, n.row, n.col) for(i in seq_len(nrow(x))) {  
+for(j in seq_len(ncol(x))) {  
+print(x[i, j])  
+}  
+####while(condition){
+se hace
+y tambien por lo que se hace se hace algo mas
+} funciona bien porque se repite hasta que se vuelva falso la condicion primaria  
+x0 <- 1
+tol <- 1e-8
+####repeat {x1 <- computeEstimate() if(abs(x1 - x0) < tol) { ## Close enough? break} else {x0 <- x1}} *puede ser infinito*  
+####Para descontinuar una iteracion se usa **next** para saltar a algo si se cumple alguna condicion, y se usa **break** para salir inmediatamente  
+##FUNCIONES  
+Agrupar serie de expresiones en un objeto y listo  
+Ejemplooo   
+args(lm)  
+function (formula, data, subset, weights, na.action, method = "qr",
+model = TRUE, x = FALSE, y = FALSE, qr = TRUE, singular.ok = TRUE,
+contrasts = NULL, offset, ...)  
+NULL  
+###make.power
+para  construir  otras  funciones.
+make.power <- function(n) {
++pow <- function(x) {
++x^n}
++pow
++ }
