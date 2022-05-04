@@ -11,3 +11,24 @@ download.cloud()
 #Guardar la fecha en que se descargaron estos datos
 dateDownloaded <- date()
 dateDownloaded
+#Con XML hay que usar:
+download.file() 
+xmlTreeParse() 
+rootRoot()
+xmlName()
+#Etiquetas
+<section>
+</section>
+<section />
+#Elementos 
+<Greeting> Hello, world </Greeting>
+#Atributos
+<img src = "" alt="instructor"/>
+<step number="3"> Connect A to B. </step>
+#Para Java
+  jsonData <- fromJSON("https://api.github.com/users/jtleek/repos")
+  names(jsonData)
+  myjson<- toJSON(iris, pretty = T)
+  cat(myjson)
+#Data.table más rápido según
+Objeto[,w:=z^2]#a;adir nuevas columnas
